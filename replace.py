@@ -11,9 +11,11 @@ args = parser.parse_args()
 
 template_data = json.loads(args.template_data)
 
-os.renames("**/{{app_name}}", template_data['app_name'])
-
 for (dirpath, dirnames, filenames) in os.walk('.', topdown=False):
+    for dirname in dirnames:
+        if fnmatch.fnmatch(dirname, "{{app_name}}"):
+            os.rename(dirpath+"/"+dirname, dirpath+"/"+template_data['app_name'])
+
     print '---------'
     print dirpath
     print dirnames
