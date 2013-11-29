@@ -16,9 +16,13 @@ for (dirpath, dirnames, filenames) in os.walk('.', topdown=False):
         if fnmatch.fnmatch(dirname, "{{app_name}}"):
             os.rename(dirpath+"/"+dirname, dirpath+"/"+template_data['app_name'])
 
-    print '---------'
-    print dirpath
-    print dirnames
-    print filenames
+        for file in filesname:
+            fileobj = open(dirpath + "/" + filename, 'r')
+            file_contents = fileobj.read()
+            fileobj.close()
+            template = Template(file_contents)
+            with open(dirpath + "/" + filename, 'w'):
+                file.write(template.render(template_data))
+
 
 
