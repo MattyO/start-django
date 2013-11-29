@@ -1,4 +1,4 @@
-from os import listdir, walk
+import os
 import fnmatch
 from jinja2 import Template
 import json
@@ -11,9 +11,9 @@ args = parser.parse_args()
 
 template_data = json.loads(args.template_data)
 
-os.renames("{{app_name}}", template_data['app_name'])
+os.renames("**/{{app_name}}", template_data['app_name'])
 
-for (dirpath, dirnames, filenames) in walk('.', topdown=False):
+for (dirpath, dirnames, filenames) in os.walk('.', topdown=False):
     print '---------'
     print dirpath
     print dirnames
