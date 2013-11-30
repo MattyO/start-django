@@ -22,7 +22,7 @@ for (dirpath, dirnames, filenames) in os.walk('.', topdown=False):
             fileobj.close()
             template = Template(file_contents)
             with open(dirpath + "/" + filename, 'w') as f:
-                fileobj.write(template.render(template_data))
+                f.write(template.render(template_data))
 
 
 
