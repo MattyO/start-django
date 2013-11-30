@@ -36,4 +36,7 @@ for (dirpath, dirnames, filenames) in os.walk('./' + args.folder, topdown=False)
             f.write(template.render(template_data))
 
 
+if fnmatch.fnmatch(args.folder, "{{app_name}}"):
+    os.rename(args.folder, template_data['app_name'])
+
 
