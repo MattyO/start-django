@@ -13,21 +13,13 @@ args = parser.parse_args()
 template_data = json.loads(args.template_data)
 
 for (dirpath, dirnames, filenames) in os.walk('./' + args.folder, topdown=False):
-    print dirpath
-    print dirnames
-    print filenames
 
     for dirname in dirnames:
-        print "doing thing in dir " + dirname
         if fnmatch.fnmatch(dirname, "{{app_name}}"):
             os.rename(dirpath+"/"+dirname, dirpath+"/"+template_data['app_name'])
 
-        print "should be running though files"
-        print filenames
 
     for filename in filenames:
-        print "running " + filename + " though jinja"
-        print "opening " + dirpath + "/" + filename
         fileobj = open(dirpath + "/" + filename, 'r')
         file_contents = fileobj.read()
         fileobj.close()
