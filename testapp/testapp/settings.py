@@ -83,4 +83,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
-LOGIN_REDIRECT_URL= reverse('common.views.user_profile')
+
+LOGIN_REDIRECT_URL= 'user_profile'
+LOGOUT_URL = 'logout'
+
+EMAIL_HOST="smtp.mailgun.org"
+EMAIL_PORT=587
+EMAIL_HOST_USER="postmaster@mavenrd.com"
+EMAIL_HOST_PASSWORD="6jx1rbiadpe9"
