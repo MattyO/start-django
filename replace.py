@@ -20,6 +20,8 @@ for (dirpath, dirnames, filenames) in os.walk('./' + args.folder, topdown=False)
 
 
     for filename in filenames:
+        if filename.endswith(".pyc"):
+            continue
         fileobj = open(dirpath + "/" + filename, 'r')
         file_contents = fileobj.read()
         fileobj.close()
