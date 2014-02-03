@@ -26,7 +26,7 @@ for (dirpath, dirnames, filenames) in os.walk('./' + folder, topdown=False):
 
         new_file_contents = ""
         with open(dirpath + "/" + filename, 'r') as f:
-            for line in f.readline():
+            for line in f:
                 line, times = re.subn(template_data['app_name'], '{{app_name}}', line)
                 new_file_contents += line
         with open(dirpath + "/" + filename, 'w') as f:
