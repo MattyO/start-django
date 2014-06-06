@@ -20,7 +20,7 @@ def register(request):
     c.update(csrf(request))
 
     def get():
-        return render(request, 'common/register.html', c)
+        return render(request, 'registration/register.html', c)
 
     def post():
         new_user_form = UserRegistrationForm(request.POST)
@@ -28,6 +28,6 @@ def register(request):
         if new_user_form.is_valid():
             new_user_form.save()
             return redirect("login")
-        return render(request, 'common/register.html', c)
+        return render(request, 'registration/register.html', c)
 
     return resolve_http_method(request, [get, post])
