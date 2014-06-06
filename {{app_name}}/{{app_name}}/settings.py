@@ -1,6 +1,6 @@
 from django.core.urlresolvers import reverse
 """
-Django settings for {{app_name}} project.
+Django settings for <%= app_name %> project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -49,9 +49,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = '{{app_name}}.urls'
+ROOT_URLCONF = '<%= app_name %>.urls'
 
-WSGI_APPLICATION = '{{app_name}}.wsgi.application'
+WSGI_APPLICATION = '<%= app_name %>.wsgi.application'
 
 
 # Database
