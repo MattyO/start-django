@@ -28,8 +28,8 @@ for (dirpath, dirnames, filenames) in os.walk('./' + args.folder, topdown=False)
 
 
     for filename in filenames:
-        print dirpath
-        print filename
+        print(dirpath)
+        print(filename)
         if filename.split('.')[-1] in exten_to_ignore:
             continue
 
