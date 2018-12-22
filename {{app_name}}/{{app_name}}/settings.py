@@ -89,5 +89,5 @@ LOGOUT_URL = 'logout'
 
 EMAIL_HOST="smtp.mailgun.org"
 EMAIL_PORT=587
-EMAIL_HOST_USER="postmaster@mavenrd.com"
-EMAIL_HOST_PASSWORD="6jx1rbiadpe9"
+EMAIL_HOST_USER="*********"
+EMAIL_HOST_PASSWORD="*********"
