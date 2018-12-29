@@ -21,13 +21,14 @@ for (dirpath, dirnames, filenames) in os.walk('./' + folder, topdown=False):
             os.rename(dirpath+"/"+dirname, dirpath+"/"+"{{app_name}}")
 
     for filename in filenames:
-        if filename.endswith(".pyc"):
+        if not filename.endswith(".py") or not filename.endswith(".html"):
             continue
 
         new_file_contents = ""
-        with open(dirpath + "/" + filename, 'r') as f:
+        with open(dirpath + "/" + filename, 'r', encoding="ascii") as f:
+            print(filename)
             for line in f:
-                line, times = re.subn(template_data['app_name'], '{{app_name}}', line)
+                line, times = re.subn(template_data['app_name'], '<%= app_name %>', line)
                 new_file_contents += line
         with open(dirpath + "/" + filename, 'w') as f:
             f.write(new_file_contents)

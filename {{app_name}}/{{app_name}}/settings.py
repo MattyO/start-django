@@ -1,4 +1,3 @@
-from django.core.urlresolvers import reverse
 """
 Django settings for <%= app_name %> project.
 

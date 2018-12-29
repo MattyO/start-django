@@ -21,4 +21,3 @@ class UserRegistrationForm(ModelForm):
         del self.cleaned_data['password_confirm']
         return User.objects.create_user(**self.cleaned_data)
 
-

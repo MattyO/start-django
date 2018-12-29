@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.core.context_processors import csrf
+from django.views.decorators.csrf import csrf_protect
 
 from common.helpers import resolve_http_method
 from common.forms import UserRegistrationForm 
@@ -14,6 +14,7 @@ def user_profile(request):
     c={"current_user":request.user}
     return render(request, "accounts/profile.html", c)
 
+@csrf_protect
 def register(request):
     new_user_form = UserRegistrationForm()
     c = { "registration_form": new_user_form }
