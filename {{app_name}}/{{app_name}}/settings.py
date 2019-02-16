@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+CONFIG_DIR = os.path.join(BASE_DIR, "config.json")
+
+APP_CONFIG = json.loads(open(CONFIG_DIR).read())
 
 
 # Quick-start development settings - unsuitable for production
@@ -73,8 +76,12 @@ WSGI_APPLICATION = '<%= app_name %>.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.' + APP_CONFIG['DB_ENGINE'],
+        'NAME': ( os.path.join(BASE_DIR, 'db.sqlite3') if APP_CONFIG['DB_NAME'] == 'sqlite3' else APP_CONFIG['DB_NAME']) ,
+        'USER': APP_CONFIG['DB_USER'],
+        'PASSWORD': APP_CONFIG['DB_PASSWORD'],
+        'HOST': APP_CONFIG['DB_HOST'],
+        'PORT': APP_CONFIG['DB_PORT'],
     }
 }
 
@@ -96,8 +103,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/public/'
-STATIC_ROOT = '/srv/www/<%= server_name %>/public'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+STATIC_ROOT = '/srv/www/<%= app_name %>/public'
 
 LOGIN_REDIRECT_URL= 'user_profile'
 LOGOUT_URL = 'logout'
