@@ -3,6 +3,7 @@ import fnmatch
 from jinja2 import Template
 import json
 import argparse
+import shutil
 
 parser = argparse.ArgumentParser()
 parser.add_argument("template_data")
@@ -42,6 +43,6 @@ for (dirpath, dirnames, filenames) in os.walk('./' + args.folder, topdown=False)
 
 
 if fnmatch.fnmatch(args.folder, "{{app_name}}"):
-    os.rename(args.folder, template_data['app_name'])
+    shutil.move(args.folder, template_data['app_name'])
 
 

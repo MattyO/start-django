@@ -3,6 +3,7 @@ import os
 import json
 import argparse
 import re
+import shutil
 
 parser = argparse.ArgumentParser()
 parser.add_argument("template_data")
@@ -35,4 +36,4 @@ for (dirpath, dirnames, filenames) in os.walk('./' + folder, topdown=False):
 
 
 if fnmatch.fnmatch(folder, template_data['app_name']):
-    os.rename(folder, "{{app_name}}")
+    shutil.move(folder, "{{app_name}}")
